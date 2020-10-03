@@ -1923,6 +1923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spongeOffset: {x: 0.5, y: 0.5, z: 3}
+  _p3DPaintSphere: {fileID: 2071696546}
 --- !u!33 &1068987215568421603
 MeshFilter:
   m_ObjectHideFlags: 0

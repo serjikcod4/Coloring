@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using PaintIn3D;
+using UnityEngine;
 
 public class SpongeController : MonoBehaviour
 {
     [SerializeField] private Vector3 _spongeOffset;
+    [SerializeField] private P3dPaintSphere _p3DPaintSphere;
 
     private Vector3 _mousePosition;
     private float _posZ;
@@ -14,6 +16,7 @@ public class SpongeController : MonoBehaviour
     private void Start()
     {
         _spongeMaterials = GetComponent<MeshRenderer>().materials;
+        _p3DPaintSphere.Color = _spongeMaterials[1].color;
     }
 
     private void Update()
@@ -70,7 +73,8 @@ public class SpongeController : MonoBehaviour
     private void SpongeColoration(Material[] bucketMaterial)
     {
         //Присваиваем губке последний материал ведра
-        _spongeMaterials[1].color = bucketMaterial[bucketMaterial.Length - 1].color;       
+        _spongeMaterials[1].color = bucketMaterial[bucketMaterial.Length - 1].color;
+        _p3DPaintSphere.Color = _spongeMaterials[1].color;
     }
 
 
@@ -87,7 +91,7 @@ public class SpongeController : MonoBehaviour
         {
             //Перекраска - цвет губки в текущий цвет ведра
             _spongeMaterials[1].color *= _currentMixedColor;
-
+            _p3DPaintSphere.Color = _spongeMaterials[1].color;
             //Текущий цвет ведра сохраняем в переменную последнего цвета для того чтобы не красить снова в текущий цвет
             _lastMixedColor = _currentMixedColor; 
         }
